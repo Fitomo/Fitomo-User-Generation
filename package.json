@@ -1,0 +1,19 @@
+{
+  "name": "fitomousergeneration",
+  "version": "1.0.0",
+  "description": "Generate random user data from UP/Fitbit for fitomo",
+  "main": "userGenerator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shadowfool/FitomoUserGeneration.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shadowfool/FitomoUserGeneration/issues"
+  },
+  "homepage": "https://github.com/shadowfool/FitomoUserGeneration#readme"
+}
