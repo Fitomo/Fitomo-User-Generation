@@ -4,8 +4,10 @@
   "description": "Generate random user data from UP/Fitbit for fitomo",
   "main": "userGenerator.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "test": "npm run compile && mocha --compilers js:babel-core/register",
+    "lint": "eslint --ignore-path .gitignore ./generators",
+    "compile": "babel --presets es2015 -d ./lib ./generators",
+    "mocha": "mocha --compilers js:babel-core/register"
   },
   "babel": {
     "presets": [
@@ -24,6 +26,7 @@
   },
   "homepage": "https://github.com/shadowfool/FitomoUserGeneration#readme",
   "dependencies": {
+    "babel-polyfill": "^6.9.1",
     "body-parser": "^1.15.1",
     "express": "^4.14.0",
     "express-session": "^1.13.0",
@@ -44,10 +47,12 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.2",
+    "mocha": "^2.5.3",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "mocha"
   ]
 }
