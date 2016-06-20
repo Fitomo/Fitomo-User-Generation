@@ -1,0 +1,59 @@
+{
+  "name": "fitomousergeneration",
+  "version": "1.0.0",
+  "description": "Generate random user data from UP/Fitbit for fitomo",
+  "main": "userGenerator.js",
+  "scripts": {
+    "test": "npm run compile && mocha --compilers js:babel-core/register",
+    "lint": "eslint --ignore-path .gitignore ./generators",
+    "compile": "babel --presets es2015 -d ./lib ./generators",
+    "mocha": "mocha --compilers js:babel-core/register"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shadowfool/FitomoUserGeneration.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shadowfool/FitomoUserGeneration/issues"
+  },
+  "homepage": "https://github.com/shadowfool/FitomoUserGeneration#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.9.1",
+    "body-parser": "^1.15.1",
+    "express": "^4.14.0",
+    "express-session": "^1.13.0",
+    "lodash": "^4.4.5",
+    "nodemon": "^1.9.2",
+    "pre-commit": "^1.1.3"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "chai": "^3.5.0",
+    "eslint": "^2.13.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-config-airbnb-base": "^3.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-mocha": "^3.0.0",
+    "eslint-plugin-react": "^5.2.2",
+    "mocha": "^2.5.3",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "pre-commit": [
+    "lint",
+    "mocha"
+  ]
+}
