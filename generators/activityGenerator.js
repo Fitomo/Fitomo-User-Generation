@@ -1,3 +1,4 @@
+var moment = require('moment')
 exports.activityGenerator = (user, date) => {
   // weighted towards low numbers
   const weighted = Math.pow(Math.random(), 2);
@@ -5,13 +6,13 @@ exports.activityGenerator = (user, date) => {
   const bell = ((Math.random() + Math.random() + Math.random()
   + Math.random() + Math.random() + Math.random()) - 3) / 3;
   // function to create bell curve
-  function weightedRandom(max, bellFactor) {
+  const weightedRandom = (max, bellFactor) => {
     let num = 0;
     for (let i = 0; i < bellFactor; i++) {
       num += Math.random() * (max / bellFactor);
     }
     return num;
-  }
+  };
   // object of daily Activity
   const dailyActivity = {
     date,
@@ -63,7 +64,6 @@ exports.activityGenerator = (user, date) => {
       name: 'Peak',
     },
     ];
-    console.log(dailyActivity.heartRateZones);
   } else if (user.deviceType === 'jawbone') {
     const distributeSleep = (sleep) => {
       let totalSleep = sleep;
@@ -80,4 +80,24 @@ exports.activityGenerator = (user, date) => {
     dailyActivity.sleep = distributeSleep(dailyActivity.totalSleep);
   }
   return dailyActivity;
+};
+// give this function the user object (below the key)
+exports.generateXActivitiesForUser = (user, x) => {
+  let date;
+  // if no activity exists create a new date
+  if (user.activitiesLog.length === 0) {
+    date = moment().format('YYYY MM DD');
+  } else {
+    // parse date string and add 1 to it.
+    date = moment(user.activitiesLog[user.activitiesLog.length - 1].date, 'YYYY MM DD')
+    .add('1', 'days');
+  }
+  // push amount of new activities
+  for (let i = 0; i < x; i++) {
+    user.activitiesLog
+    .push(exports.activityGenerator(user, moment(date, 'YYYY MM DD').format('YYYY MM DD')));
+    date = moment(date, 'YYYY MM DD').add(1, 'days');
+  }
+  // return the user object with the newly added activities
+  return user;
 };
