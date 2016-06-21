@@ -1,33 +1,48 @@
-// const nameGenerator = require('./nameGenerator.js');
-// const idGenerator = require('./idGenerator.js');
-// // graph friends randomly
-// const userDataGenerator = (type, amountOfUsers, amountOfDays, difficulty) => {
-//   const users = {};
-//   const deviceTypes = {
-//     up: {
-//     }
-//   }
-//   const difficultyTypes = {
-//     light: .75,
-//     moderate: 1,
-//     heavy: 1.25,
-//   }
-//   for(var i = 0; i < amountOfUsers; i++){
-//     // create a random user id;
-//     // create a object at user id with, device type,
-//     // data, weight, height name (use name generator library)
-//     // var currentDate = new Date();
-//     // for(var i = 0; i < amountOfDays);
-//       // increment current date by 1 currentDate.setDate(currentDate.getDate() + 1);
-//   }
-// }
+const nameGenerator = require('./nameGenerator.js');
+const idGenerator = require('./idGenerator.js');
+const activityGenerator = require('./activityGenerator.js');
+const moment = require('moment');
+// graph friends randomly
+const devices = ['fitbit', 'jawbone'];
+const difficultyTypes = {
+  light: 0.75,
+  moderate: 1.00,
+  heavy: 1.50,
+};
+const bodyType = {
+  slim: 120,
+  moderate: 150,
+  heavy: 200,
+  overweight: 250,
+};
+function User(difficulty, gender, type, body) {
+  this.difficulty = difficultyTypes[difficulty] || (Math.random() * 1.25);
+  this.name = nameGenerator.nameGenerator(gender);
+  this.deviceType = type || devices[Math.floor(Math.random() * devices.length)];
+  this.bodyType = body ||
+  Object.keys(bodyType)[Math.floor(Object.keys(bodyType).length * Math.random())];
+  this.weight = bodyType[this.bodyType] || bodyType[Object.keys(bodyType)
+  [Math.floor(Object.keys(bodyType).length * Math.random())]];
+  this.activitiesLog = [];
+}
 
-//    "activities-log-steps":[
-// //         {"dateTime":"2011-04-27","value":5490},
-// //         {"dateTime":"2011-04-28","value":2344},
-// //         {"dateTime":"2011-04-29","value":2779},
-// //         {"dateTime":"2011-04-30","value":9196},
-// //         {"dateTime":"2011-05-01","value":15828},
-// //         {"dateTime":"2011-05-02","value":1945},
-// //         {"dateTime":"2011-05-03","value":366}
-// //     ]
+exports.userDataGenerator = (type = '', amountOfUsers = 1, gender = '', difficulty = '', amountOfDays = '1', bodyType = '') => {
+  const users = {};
+  // create random users with unique names/ and ids/ fill in difficutly
+  for (let i = 0; i < amountOfUsers; i++) {
+    const id = idGenerator.idGenerator(type);
+    // make a new user at a unique id
+    users[id] = new User(difficulty, gender, type);
+  }
+  let date = moment();
+  for (let j = 0; j < amountOfDays; j++) {
+    for (const key in users) {
+      // console.log(users[key].activitiesLog);
+      users[key].activitiesLog
+      .push(activityGenerator.activityGenerator(users[key], moment(date, 'YYYY MM DD').format('YYYY MM DD')));
+      users[key].weight = users[key].activitiesLog[users[key].activitiesLog.length - 1].weight;
+    }
+    date = moment(date, 'YYYY MM DD').add(1, 'days');
+  }
+  return users;
+};

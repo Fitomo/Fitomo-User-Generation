@@ -5,7 +5,7 @@
   "main": "userGenerator.js",
   "scripts": {
     "test": "npm run compile && mocha --compilers js:babel-core/register",
-    "lint": "eslint --ignore-path .gitignore ./generators",
+    "lint": "eslint --ignore-path .gitignore ./test ./generators",
     "compile": "babel --presets es2015 -d ./lib ./generators",
     "mocha": "mocha --compilers js:babel-core/register"
   },
@@ -31,6 +31,7 @@
     "express": "^4.14.0",
     "express-session": "^1.13.0",
     "lodash": "^4.4.5",
+    "moment": "^2.13.0",
     "nodemon": "^1.9.2",
     "pre-commit": "^1.1.3"
   },
