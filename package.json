@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run compile && mocha --compilers js:babel-core/register",
     "lint": "eslint --ignore-path .gitignore ./test ./generators",
-    "compile": "babel --presets es2015 -d ./lib ./generators",
+    "compile": "babel --presets es2015 -d ./lib/compiled ./generators",
     "mocha": "mocha --compilers js:babel-core/register"
   },
   "babel": {
