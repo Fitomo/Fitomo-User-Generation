@@ -5,8 +5,8 @@ const activityGenerator = require('./activityGenerator.js');
 const devices = ['fitbit', 'jawbone'];
 const difficultyTypes = {
   light: 0.75,
-  moderate: 1,
-  heavy: 1.25,
+  moderate: 1.00,
+  heavy: 1.50,
 };
 const bodyType = {
   slim: 120,
@@ -52,7 +52,7 @@ const userDataGenerator = (type = '', amountOfUsers = 1, gender = '', difficulty
   return users;
 };
 // console.log(userDataGenerator(type, amountOfUsers, gender, difficulty, amountOfDays, bodyType));
-console.log(userDataGenerator('', 2, '', '', 10, ''));
+console.log(userDataGenerator('', 1, '', '', 10, ''));
 
 // create a random user id;
 // create a object at user id with, device type,
