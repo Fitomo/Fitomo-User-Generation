@@ -61,6 +61,7 @@ describe('Generators', function() {
   describe('User Generator', function () {
     it('should return an object', function () {
       assert.isObject(userGenerators.userDataGenerator('', 1, '', '', 10, ''));
+      console.log(userGenerators.userDataGenerator('', 40, '', '', 1, ''));
     });
   });
   describe('Activity Generator', function () {
