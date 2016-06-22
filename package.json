@@ -5,8 +5,8 @@
   "main": "userGenerator.js",
   "scripts": {
     "test": "npm run compile && mocha --compilers js:babel-core/register",
-    "lint": "eslint --ignore-path .gitignore ./test ./server/generators",
-    "compile": "babel --presets es2015 -d ./lib/compiled ./server/generators",
+    "lint": "eslint --ignore-path .gitignore ./test ./server/",
+    "compile": "babel --presets es2015 -d ./lib/compiled ./server/",
     "mocha": "mocha --compilers js:babel-core/register"
   },
   "babel": {

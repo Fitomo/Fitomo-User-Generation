@@ -1,5 +1,5 @@
 const getRandomElement = require('./utility/utilities.js').getRandomElement;
-//creates a random string of numbers and letters of a length provided as an argument
+// creates a random string of numbers and letters of a length provided as an argument
 const mixedCaseIdGenerator = (length) => {
   const possiblities = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let ans = '';

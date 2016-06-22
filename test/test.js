@@ -1,3 +1,4 @@
+/* eslint-disable */
 import 'babel-polyfill';
 const nameGenerators = require('../server/generators/nameGenerator.js');
 const idGenerators = require('../server/generators/idGenerator.js');
@@ -62,13 +63,19 @@ describe('Generators', () => {
     it('should return an object', () => {
       assert.isObject(userGenerators.userDataGenerator('', 1, '', '', 10, ''));
     });
+    it('should have keys: difficulty, name, deviceType, bodyType, weight, friends, activitiesLog', () => {
+      const newUser = userGenerators.userDataGenerator('', 1, '', '', 10, '');
+      for (const key in newUser) {
+        expect(newUser[key]).to.contain.all.keys(['difficulty', 'name', 'deviceType', 'bodyType', 'weight', 'friends', 'activitiesLog']);
+      }
+    });
   });
   describe('Activity Generator', () => {
     it('should return an object', () => {
       assert.isObject(activityGenerators.activityGenerator(fitbitTestUser['SATYJH'], date));
     });
-    it('should have values for the properties: date, distance, steps, calories, totalSleep, restingHR, weight', () => {
-      assert.isObject(activityGenerators.activityGenerator(fitbitTestUser['SATYJH'], date));
+    it('should have keys: date, distance, steps, calories, totalSleep, restingHR, weight', () => {
+      expect(activityGenerators.activityGenerator(fitbitTestUser['SATYJH'], date)).to.contain.all.keys(['date', 'distance', 'steps', 'calories', 'totalSleep', 'restingHR', 'weight']);
     });
     it('should have a heartRateZones property when called with a fitbit', () => {
       expect(activityGenerators.activityGenerator(fitbitTestUser['SATYJH'], date)).to.have.ownProperty('heartRateZones');

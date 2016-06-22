@@ -1,4 +1,4 @@
-var moment = require('moment')
+const moment = require('moment');
 exports.activityGenerator = (user, date) => {
   // weighted towards low numbers
   const weighted = Math.pow(Math.random(), 2);

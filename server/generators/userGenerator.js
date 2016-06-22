@@ -52,7 +52,6 @@ exports.userDataGenerator = (type = '', amountOfUsers = 1, gender = '', difficul
       date = moment(date, 'YYYY MM DD').add(1, 'days');
     }
   }
-  console.log(users);
   return users;
 };
 
