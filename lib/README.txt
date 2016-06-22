@@ -1,0 +1,1 @@
+For whatever reason I can't compile without the lib folder, but need git not to commit my compiled folder. so in order to keep the lib folder in git I've added this readme.

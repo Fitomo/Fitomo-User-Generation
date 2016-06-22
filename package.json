@@ -5,8 +5,8 @@
   "main": "userGenerator.js",
   "scripts": {
     "test": "npm run compile && mocha --compilers js:babel-core/register",
-    "lint": "eslint --ignore-path .gitignore ./test ./generators",
-    "compile": "babel --presets es2015 -d ./lib ./generators",
+    "lint": "eslint --ignore-path .gitignore ./test ./server/",
+    "compile": "babel --presets es2015 -d ./lib/compiled ./server/",
     "mocha": "mocha --compilers js:babel-core/register"
   },
   "babel": {
@@ -26,8 +26,9 @@
   },
   "homepage": "https://github.com/shadowfool/FitomoUserGeneration#readme",
   "dependencies": {
+    "babel-cli": "^6.10.1",
     "babel-polyfill": "^6.9.1",
-    "body-parser": "^1.15.1",
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-session": "^1.13.0",
     "lodash": "^4.4.5",
@@ -36,7 +37,6 @@
     "pre-commit": "^1.1.3"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",

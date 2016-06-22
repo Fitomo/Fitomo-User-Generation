@@ -1,4 +1,4 @@
-var moment = require('moment')
+const moment = require('moment');
 exports.activityGenerator = (user, date) => {
   // weighted towards low numbers
   const weighted = Math.pow(Math.random(), 2);
@@ -38,6 +38,7 @@ exports.activityGenerator = (user, date) => {
   const peak = totalTime;
   if (user.deviceType === 'fitbit') {
     // calorie count should be weighted by type, but currently it is just standarized
+    // abstract this out into a utility function
     dailyActivity.heartRateZones = [
     { caloriesOut: dailyActivity.calories * (out / 1440),
       max: 94,
@@ -82,8 +83,12 @@ exports.activityGenerator = (user, date) => {
   return dailyActivity;
 };
 // give this function the user object (below the key)
-exports.generateXActivitiesForUser = (user, x) => {
+exports.generateXActivitiesForUser = (user, x = '1') => {
   let date;
+  // do nothing if user is not provided, or the user is not an object
+  if (!user || typeof user !== 'object') {
+    return 'no user provided';
+  }
   // if no activity exists create a new date
   if (user.activitiesLog.length === 0) {
     date = moment().format('YYYY MM DD');
