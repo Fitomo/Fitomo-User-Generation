@@ -30,8 +30,6 @@ function User(difficulty, gender, type, body) {
 exports.userDataGenerator = (type = '', amountOfUsers = 1, gender = '', difficulty = '', amountOfDays = '1', bodyType = '') => {
   const users = {};
   const userIds = [];
-  // default values of user inputs something other than required type
-
   // create random users with unique names/ and ids/ fill in difficutly
   for (let i = 0; i < amountOfUsers; i++) {
     const id = generateId(type);
