@@ -2,9 +2,6 @@ const moment = require('moment');
 exports.activityGenerator = (user, date) => {
   // weighted towards low numbers
   const weighted = Math.pow(Math.random(), 2);
-  // different aproach at bell curve
-  const bell = ((Math.random() + Math.random() + Math.random()
-  + Math.random() + Math.random() + Math.random()) - 3) / 3;
   // function to create bell curve
   const weightedRandom = (max, bellFactor) => {
     let num = 0;
@@ -15,11 +12,11 @@ exports.activityGenerator = (user, date) => {
   };
   // object of daily Activity
   const dailyActivity = {
-    date,
+    level: user.level,
     distance: 0,
     steps: weightedRandom((20000 * user.difficulty), 4),
     calories: 0,
-    totalSleep: 9 * (80 / (100 + Math.round(100 * bell))),
+    totalSleep: weightedRandom(16, 4),
     restingHR: 0,
     weight: user.weight + (weighted * (0.25 + 1) - 0.5),
   };

@@ -18,9 +18,10 @@ const bodyTypes = {
 };
 // the pseudoclasical user
 function User(difficulty, gender, type, body) {
-  this.difficulty = difficultyTypes[difficulty] || (Math.random() * 1.25);
   this.name = generateName(gender);
+  this.level = 0;
   this.deviceType = type || getRandomElement(devices);
+  this.difficulty = difficultyTypes[difficulty] || (Math.random() * 1.25);
   this.bodyType = body || getRandomElement(Object.keys(bodyTypes));
   this.weight = bodyTypes[this.bodyType];
   this.friends = [];
@@ -30,8 +31,6 @@ function User(difficulty, gender, type, body) {
 exports.userDataGenerator = (type = '', amountOfUsers = 1, gender = '', difficulty = '', amountOfDays = '1', bodyType = '') => {
   const users = {};
   const userIds = [];
-  // default values of user inputs something other than required type
-
   // create random users with unique names/ and ids/ fill in difficutly
   for (let i = 0; i < amountOfUsers; i++) {
     const id = generateId(type);

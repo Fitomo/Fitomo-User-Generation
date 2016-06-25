@@ -4,7 +4,7 @@
   "description": "Generate random user data from UP/Fitbit for fitomo",
   "main": "userGenerator.js",
   "scripts": {
-    "test": "npm run compile && mocha --compilers js:babel-core/register",
+    "test": "npm run compile && mocha --reporter nyan --compilers js:babel-core/register",
     "lint": "eslint --ignore-path .gitignore ./test ./server/",
     "compile": "babel --presets es2015 -d ./lib/compiled ./server/",
     "mocha": "mocha --compilers js:babel-core/register"
