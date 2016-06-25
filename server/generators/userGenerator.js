@@ -30,13 +30,8 @@ function User(difficulty, gender, type, body) {
 exports.userDataGenerator = (type = '', amountOfUsers = 1, gender = '', difficulty = '', amountOfDays = '1', bodyType = '') => {
   const users = {};
   const userIds = [];
-  // deffault values of user inputs something other than required type
-  if (typeof amountOfUsers !== 'number') {
-    amountOfUsers = 1;
-  }
-  if (typeof amountOfDays !== 'number') {
-    amountOfDays = 1;
-  }
+  // default values of user inputs something other than required type
+
   // create random users with unique names/ and ids/ fill in difficutly
   for (let i = 0; i < amountOfUsers; i++) {
     const id = generateId(type);
@@ -44,14 +39,13 @@ exports.userDataGenerator = (type = '', amountOfUsers = 1, gender = '', difficul
     users[id] = new User(difficulty, gender, type, bodyType);
   }
   for (const key in users) {
-    let date = moment().format('YYYY MM DD');
+    let date = moment().format('YYYYMMDD');
     users[key].friends = generateFriends(userIds);
     for (let j = 0; j < amountOfDays; j++) {
-      users[key].activitiesLog.push(generateDailyActivity(users[key], moment(date, 'YYYY MM DD').format('YYYY MM DD')));
+      users[key].activitiesLog.push(generateDailyActivity(users[key], moment(date, 'YYYYMMDD').format('YYYYMMDD')));
       users[key].weight = users[key].activitiesLog[users[key].activitiesLog.length - 1].weight;
-      date = moment(date, 'YYYY MM DD').add(1, 'days');
+      date = moment(date, 'YYYYMMDD').add(1, 'days');
     }
   }
   return users;
 };
-

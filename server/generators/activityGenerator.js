@@ -91,16 +91,16 @@ exports.generateXActivitiesForUser = (user, x = '1') => {
   }
   // if no activity exists create a new date
   if (user.activitiesLog.length === 0) {
-    date = moment().format('YYYY MM DD');
+    date = moment().format('YYYYMMDD');
   } else {
     // parse date string and add 1 to it.
-    date = moment(user.activitiesLog[user.activitiesLog.length - 1].date, 'YYYY MM DD')
+    date = moment(user.activitiesLog[user.activitiesLog.length - 1].date, 'YYYYMMDD')
     .add('1', 'days');
   }
   // push amount of new activities
   for (let i = 0; i < x; i++) {
     user.activitiesLog
-    .push(exports.activityGenerator(user, moment(date, 'YYYY MM DD').format('YYYY MM DD')));
+    .push(exports.activityGenerator(user, moment(date, 'YYYY MM DD').format('YYYYMMDD')));
     date = moment(date, 'YYYY MM DD').add(1, 'days');
   }
   // return the user object with the newly added activities
