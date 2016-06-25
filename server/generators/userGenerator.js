@@ -18,9 +18,10 @@ const bodyTypes = {
 };
 // the pseudoclasical user
 function User(difficulty, gender, type, body) {
-  this.difficulty = difficultyTypes[difficulty] || (Math.random() * 1.25);
   this.name = generateName(gender);
+  this.level = 0;
   this.deviceType = type || getRandomElement(devices);
+  this.difficulty = difficultyTypes[difficulty] || (Math.random() * 1.25);
   this.bodyType = body || getRandomElement(Object.keys(bodyTypes));
   this.weight = bodyTypes[this.bodyType];
   this.friends = [];
