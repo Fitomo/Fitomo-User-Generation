@@ -63,6 +63,8 @@ exports.activityGenerator = (user, date) => {
     },
     ];
   } else if (user.deviceType === 'jawbone') {
+    // distributes sleep for jawbone users based on remSleep, deepSleep, lightSleep.
+    // quantities are based on avr % of each in a human adult.
     const distributeSleep = (sleep) => {
       let totalSleep = sleep;
       const remSleep = totalSleep * (Math.random() * (0.25 - 0.20) + 0.20);
