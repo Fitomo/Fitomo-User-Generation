@@ -12,6 +12,7 @@ exports.activityGenerator = (user, date) => {
   };
   // object of daily Activity
   const dailyActivity = {
+    date: date,
     level: user.level,
     distance: 0,
     steps: weightedRandom((20000 * user.difficulty), 4),
