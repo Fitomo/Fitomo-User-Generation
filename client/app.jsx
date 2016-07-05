@@ -8,7 +8,6 @@
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       type: 'fitbit',
       amountOfUsers: 1,
@@ -32,10 +31,13 @@ class App extends React.Component {
       bodyType: this.state.bodyType,
       data: '',
     };
+    // send a request to the server to proccess data into the generator
     $.get('http://localhost:4000/api/generateUsers', dataObject, (data) => {
+      // set the property data (which the textarea's value is set to) to the returned json.
       this.setState({ data });
     });
   }
+  // handles string events which are controlled by drop downs
   handleChange(event) {
     const type = event.target.name;
     const value = event.target.value;
@@ -47,12 +49,14 @@ class App extends React.Component {
       this.setState({ [type]: value });
     }
   }
+  // Numbers need to be floored because they are not controlled by drop downs.
   handleNumberChange(event) {
     console.log(event.target.name);
     const type = event.target.name;
     const value = Math.floor(event.target.value);
     this.setState({ [type]: value });
   }
+  // Don't submit (and refersh!!) when the user presses enter in a text box
   disalowEnterSubmit(event) {
     if (event.key === 'Enter') {
       event.preventDefault();
