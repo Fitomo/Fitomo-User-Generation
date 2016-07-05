@@ -64,9 +64,9 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="outerContainer">
         <div className="container">
-          <div>Generate Mock Users</div>
+          <div className="title">Generate Mock Users</div>
           <div className="choice">
             <span>Device Type: </span>
             <select className="float-right" name="type" onChange={this.handleChange}>
@@ -117,7 +117,7 @@ class App extends React.Component {
           <button className="submit" onClick={this.submitUserGeneration}>Get Mock User(s) JSON</button>
         </div>
         <div className="data">
-          <div>USER DATA</div>
+          <div className="tag">USER DATA:</div>
           <textarea className="text" value={this.state.data}>
           </textarea>
         </div>
