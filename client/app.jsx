@@ -32,7 +32,7 @@ class App extends React.Component {
       data: '',
     };
     // send a request to the server to proccess data into the generator
-    $.get('http://localhost:4000/api/generateUsers', dataObject, (data) => {
+    $.get(`${window.location.href}api/generateUsers`, dataObject, (data) => {
       // set the property data (which the textarea's value is set to) to the returned json.
       this.setState({ data });
     });
