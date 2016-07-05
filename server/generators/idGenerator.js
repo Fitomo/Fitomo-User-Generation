@@ -10,7 +10,7 @@ const mixedCaseIdGenerator = (length) => {
 };
 // generates fitbit and jawbone up id's
 exports.idGenerator = (type) => {
-  let choosenType = type;
+  let choosenType = type.toLowerCase();
   // set the type to either fitbit or jawbone if no type is provided or an invalid type is provided
   if (!(choosenType === 'fitbit' || choosenType === 'jawbone')) {
     const types = ['fitbit', 'jawbone'];

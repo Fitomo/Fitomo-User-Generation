@@ -10,8 +10,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      type: 'fitbit',
       amountOfUsers: 1,
+      gender: 'male',
+      difficulty: 'light',
       amountOfDays: 1,
+      bodyType: 'slim',
     };
     this.submitUserGeneration = this.submitUserGeneration.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -35,7 +39,13 @@ class App extends React.Component {
   handleChange(event) {
     const type = event.target.name;
     const value = event.target.value;
-    this.setState({ [type]: value });
+    if (value === 'random') {
+      // random should be empty string as the function takes these as default params
+      this.setState({ [type]: '' });
+    } else {
+      // if not random allow it to set the value
+      this.setState({ [type]: value });
+    }
   }
   handleNumberChange(event) {
     console.log(event.target.name);
@@ -56,8 +66,8 @@ class App extends React.Component {
           <div className="choice">
             <span>Device Type: </span>
             <select className="float-right" name="type" onChange={this.handleChange}>
-              <option value="Fitbit">Fitbit</option>
-              <option value="Jawbone">Jawbone</option>
+              <option value="fitbit">Fitbit</option>
+              <option value="jawbone">Jawbone</option>
               <option value="random">random</option>
             </select>
           </div>
@@ -70,8 +80,8 @@ class App extends React.Component {
           <div className="choice">
             <span>Gender: </span>
             <select className="float-right" name="gender" onChange={this.handleChange}>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <option value="male">male</option>
+              <option value="female">female</option>
               <option value="random">random</option>
             </select>
           </div>
