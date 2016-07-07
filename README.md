@@ -18,7 +18,7 @@
 # What it looks like
 ![alt tag](https://raw.githubusercontent.com/Fitomo/Fitomo-User-Generation/master/User%20Generator%20Screen%20Shot.png)
 
-## What is does
+## What it does
 Creates mock user data for Fitbit and Jawbone Up daily activities. Scales user activity by introducing intesity variable which dictates range of activity for that user.
 
 ## Getting started
