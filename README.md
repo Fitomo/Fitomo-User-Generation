@@ -5,18 +5,21 @@
 
 ## Table of Contents
 
-1. [Getting started](#Getting-Started)
-  1. [Clone the latest version](#Clone-Latest)
-  2. [Install dependencies](#Install-Dependencies)
-  3. [Define Enviormental Variables](#Define-Env)
-  4. [Run the application](#Run-Application)
-2. [Tech Stack](#Tech-Stack)
-3. [Directory Layout](#Directory-Layout)
-4. [Contributing](#Contributing)
-5. [License](#License)
+1. [Getting started](#getting-started)
+  1. [Clone the latest version](#1-clone-the-latest-version)
+  2. [Install dependencies](#2-install-dependencies)
+  3. [Define Enviormental Variables](#3-define-environmental-variables)
+  4. [Run the application](#4-run-the-application)
+2. [Tech Stack](#tech-stack)
+3. [Directory Layout](#directory-layout)
+4. [Contributing](#contributing)
+5. [License](#license)
 
 # What it looks like
 ![alt tag](https://raw.githubusercontent.com/Fitomo/Fitomo-User-Generation/master/User%20Generator%20Screen%20Shot.png)
+
+## What is does
+Creates mock user data for Fitbit and Jawbone Up daily activities. Scales user activity by introducing intesity variable which dictates range of activity for that user.
 
 ## Getting started
 
@@ -35,8 +38,8 @@
   ```sh
   $ npm install
   ```
-#### 3. Define Enviormental Variables
-  Define the enviormental variable IP to equal the host of the server.
+#### 3. Define Environmental Variables
+  Define the environmental variable IP to equal the host of the server.
 #### 4. Run the application
   
   ```sh
