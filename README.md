@@ -15,6 +15,9 @@
 4. [Contributing](#Contributing)
 5. [License](#License)
 
+# What it looks like
+![alt tag](https://raw.githubusercontent.com/Fitomo/Fitomo-User-Generation/master/User%20Generator%20Screen%20Shot.png)
+
 ## Getting started
 
 #### 1. Clone the latest version
@@ -61,12 +64,11 @@
 │   ├── /components/            # Front-End Dependencies
 ├── /lib/                       # Compiled Program
 ├── /node_modules/              # 3rd-party libraries and utilities
-├── /server/                    # Client source code
+├── /server/                    # Server source code
 │   ├── /controllers/           # Manage API calls and request handling
 │   ├── /generators/            # Generate User Data
 │   ├── /routes/                # Handle all routing
 │   ├── /server.js              # Core server file
-├── /StickMan/                  # Fitomo avatar pictures
 ├── /test/                      # Test Setup
 ├── .eslintrc                   # ESLint settings
 ├── .babelrc                    # Babel settings
